@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Techniques</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .icon-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem; /* rounded-3xl */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .icon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+        }
+        .icon-bg {
+            background-color: #e2e8f0;
+            border-radius: 9999px; /* rounded-full */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Main title and subtitle -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Top Techniques</h1>
+            <p class="text-lg md:text-xl text-gray-600">Explore these powerful techniques to enhance your creativity and problem-solving skills.</p>
+        </header>
+
+        <!-- Techniques grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card 1: Cognitive Reframing -->
+            <div class="icon-card p-6 flex flex-col items-center text-center">
+                <div class="w-16 h-16 icon-bg flex items-center justify-center mb-4">
+                    <!-- Icon for Cognitive Reframing -->
+                    <svg class="w-10 h-10 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.414 9.475 5 8 5c-4 0-4 6-4 6m8-5c1.168 0 2.525.414 4 1.253m-4-1.253c4 0 4 6 4 6m-9-4h-2m-1 4h-2m-2-4h-2"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Cognitive Reframing</h2>
+                <p class="text-gray-500">Change your perspective on a situation to find new possibilities.</p>
+            </div>
+
+            <!-- Card 2: Perspective Shifting -->
+            <div class="icon-card p-6 flex flex-col items-center text-center">
+                <div class="w-16 h-16 icon-bg flex items-center justify-center mb-4">
+                    <!-- Icon for Perspective Shifting -->
+                    <svg class="w-10 h-10 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Perspective Shifting</h2>
+                <p class="text-gray-500">Walk in someone else's shoes to see a problem from a different angle.</p>
+            </div>
+
+            <!-- Card 3: Awe Spotting -->
+            <div class="icon-card p-6 flex flex-col items-center text-center">
+                <div class="w-16 h-16 icon-bg flex items-center justify-center mb-4">
+                    <!-- Icon for Awe Spotting -->
+                    <svg class="w-10 h-10 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4M17 17h4M16.5 10.5a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Awe Spotting</h2>
+                <p class="text-gray-500">Find inspiration in the vastness of nature and the universe.</p>
+            </div>
+            
+            <!-- Card 4: Pattern Breaking -->
+            <div class="icon-card p-6 flex flex-col items-center text-center">
+                <div class="w-16 h-16 icon-bg flex items-center justify-center mb-4">
+                    <!-- Icon for Pattern Breaking -->
+                    <svg class="w-10 h-10 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Pattern Breaking</h2>
+                <p class="text-gray-500">Break out of your routines to discover new ways of doing things.</p>
+            </div>
+
+            <!-- Card 5: Question Storming -->
+            <div class="icon-card p-6 flex flex-col items-center text-center">
+                <div class="w-16 h-16 icon-bg flex items-center justify-center mb-4">
+                    <!-- Icon for Question Storming -->
+                    <svg class="w-10 h-10 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 3.064-.257.07-.513.154-.762.251M15 14c-1.278 0-2.556-.375-3.006-.864m-.494-2.136c-.45-.489-.722-1.278-.722-2.136C9 10 7.21 8.657 5 8.657 2.79 8.657 1 10 1 11.657c0 1.4.957 2.575 2.518 3.064M8 17h.01M16 17h.01"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Question Storming</h2>
+                <p class="text-gray-500">Challenge assumptions by asking questions instead of seeking answers.</p>
+            </div>
+
+            <!-- Card 6: Sensory Immersion -->
+            <div class="icon-card p-6 flex flex-col items-center text-center">
+                <div class="w-16 h-16 icon-bg flex items-center justify-center mb-4">
+                    <!-- Icon for Sensory Immersion -->
+                    <svg class="w-10 h-10 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.414 9.475 5 8 5c-4 0-4 6-4 6m8-5c1.168 0 2.525.414 4 1.253m-4-1.253c4 0 4 6 4 6m-9-4h-2m-1 4h-2m-2-4h-2"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Sensory Immersion</h2>
+                <p class="text-gray-500">Engage your senses to fully experience and absorb your surroundings.</p>
+            </div>
+            
+            <!-- Card 7: Reverse Association -->
+            <div class="icon-card p-6 flex flex-col items-center text-center">
+                <div class="w-16 h-16 icon-bg flex items-center justify-center mb-4">
+                    <!-- Icon for Reverse Association -->
+                    <svg class="w-10 h-10 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Reverse Association</h2>
+                <p class="text-gray-500">Flip your problem on its head and find a new way to approach it.</p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
