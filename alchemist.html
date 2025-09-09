@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reVISION Alchemist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
+        .container {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #10b981;
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 w-full container flex flex-col items-center text-center space-y-8">
+        <div class="flex flex-col items-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-teal-600 tracking-tight mb-2">reVISION Alchemist</h1>
+            <p class="text-lg md:text-xl text-gray-500 font-medium">Change the Way You See Things and The Things You See Change</p>
+        </div>
+
+        <div id="content-display" class="bg-gray-50 border border-gray-200 rounded-xl p-6 md:p-8 w-full min-h-[200px] flex items-center justify-center transition-all duration-300">
+            <p id="alchemist-text" class="text-base md:text-lg text-gray-700 leading-relaxed italic">
+                Awaiting new perspective...
+            </p>
+            <div id="loading-indicator" class="hidden flex items-center space-x-2">
+                <div class="loading-spinner"></div>
+                <span class="text-gray-500">Transforming...</span>
+            </div>
+        </div>
+
+        <button id="generate-button" class="bg-teal-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-teal-600 transition-colors duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-teal-500 focus:ring-opacity-50">
+            reVision
+        </button>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateButton = document.getElementById('generate-button');
+            const alchemistText = document.getElementById('alchemist-text');
+            const loadingIndicator = document.getElementById('loading-indicator');
+
+            const generateAlchemistResponse = async () => {
+                const systemPrompt = "You are the reVISION Alchemist, a practical guide who helps visitors see the value in the ordinary, discarded, unvalued, or unwanted. Your purpose is to inspire new perspectives by presenting a common object in a new and unexpected way that would be useful and practical. The tone of your response should be practical and insightful and excited to share the different way of seeing things that others didn't recognize as valuable. The entire output must be a single, cohesive paragraph. Do not use bullet points or lists.";
+                const userQuery = "Upon activation, your first action is to select a single thing that is often discarded or something that is not valued or unwanted or simply ignored. Your second action is to present the item and a new way to see it. This 'new way to see' should be a perspective shift that helps visitors to see the thing in a different way. It must be unique, thought-provoking, and invite the user to reconsider the item's true nature or purpose and value.";
+                
+                // Show loading state
+                alchemistText.classList.add('hidden');
+                loadingIndicator.classList.remove('hidden');
+                generateButton.disabled = true;
+
+                const apiKey = ""; // Canvas will provide this.
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`API error: ${response.status} ${response.statusText}`);
+                    }
+
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        const text = candidate.content.parts[0].text;
+                        alchemistText.textContent = text;
+                    } else {
+                        alchemistText.textContent = "Oops! The Alchemist is taking a moment to gather new insights. Please try again.";
+                    }
+                } catch (error) {
+                    console.error("Failed to fetch Alchemist response:", error);
+                    alchemistText.textContent = "There was an error connecting. Check your internet connection or try again later.";
+                } finally {
+                    // Hide loading state
+                    loadingIndicator.classList.add('hidden');
+                    alchemistText.classList.remove('hidden');
+                    generateButton.disabled = false;
+                }
+            };
+
+            // Call the function once on page load to generate the first insight
+            generateAlchemistResponse();
+            
+            // Add click listener to the button
+            generateButton.addEventListener('click', generateAlchemistResponse);
+        });
+    </script>
+</body>
+</html>
