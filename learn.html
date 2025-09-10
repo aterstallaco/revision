@@ -44,7 +44,7 @@
             height: 1px;
             background-color: var(--sophisticated-gray);
         }
-        
+
         .video-container {
             position: absolute;
             top: 0;
@@ -54,10 +54,10 @@
             overflow: hidden;
             z-index: 0;
         }
-        
+
         .video-container video {
-            min-width: 100%; 
-            min-height: 100%; 
+            min-width: 100%;
+            min-height: 100%;
             width: auto;
             height: auto;
             position: absolute;
@@ -78,7 +78,7 @@
         .animate-pulse-slow {
             animation: pulse 3s infinite ease-in-out;
         }
-        
+
         /* Styles for the hover effect on the cards */
         .card-container {
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -96,10 +96,12 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
-            padding: 0 1rem;
+            /* Initially remove all padding to prevent any text from peeking out */
+            padding: 0; 
         }
         .collapsible-content.expanded {
             max-height: 500px; /* A large enough value to allow the content to expand */
+            /* Add padding back when the content is expanded */
             padding: 1rem;
         }
     </style>
@@ -138,103 +140,79 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Cognitive Reframe Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Cognitive Reframe</h3>
-                    <p class="mb-4 text-dark-text">Take a negative thought and actively reframe it into a more positive or neutral one.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Cognitive Reframe</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            For example, instead of thinking "I failed that test," reframe it as "This test showed me the areas where I need to focus my study efforts."
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">This practice challenges you to intentionally look for a different way to interpret a situation. Instead of viewing a setback as a failure, you can reframe it as a learning opportunity or a sign that you need to shift your approach. This helps in developing a more flexible and resilient mindset.</p>
                     </div>
                 </div>
 
                 <!-- Perspective Shift Starter Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Perspective Shift Starter</h3>
-                    <p class="mb-4 text-dark-text">Consider the exact opposite of your current thought or assumption.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Perspective Shift Starter</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            If you feel like a project is a failure, explore the idea that it is a wild success in a way you haven't considered.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Consider a challenge you are facing from the point of view of someone else. What would a wise mentor, a young child, or even a rival see? This exercise helps you break free from your own biases and uncover new solutions you might have overlooked. It promotes empathy and opens up new avenues for possibility.</p>
                     </div>
                 </div>
 
                 <!-- Question Storm Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Question Storm</h3>
-                    <p class="mb-4 text-dark-text">Instead of brainstorming answers, generate as many questions as you can about a topic.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Question Storm</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            Before trying to solve a problem, ask: "Why is this a problem? What assumptions am I making? What would success look like from every perspective?"
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Instead of brainstorming for answers, this exercise focuses on generating as many questions as possible about a single topic or problem. This shifts your focus from a search for certainty to a pursuit of curiosity, which can lead to unexpected and innovative insights.</p>
                     </div>
                 </div>
 
                 <!-- Parallax Thinking Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Parallax Thinking</h3>
-                    <p class="mb-4 text-dark-text">View a problem from multiple, simultaneous angles.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Parallax Thinking</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            For a business decision, consider the view of an employee, a customer, a competitor, and a shareholder all at once.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">The parallax effect is the apparent displacement of an object when viewed from different positions. In thinking, this means considering a problem from multiple, simultaneous angles, like viewing a statue from the front, side, and back at once. This practice helps to create a richer, more comprehensive understanding.</p>
                     </div>
                 </div>
 
                 <!-- Gratitude Remix Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Gratitude Remix</h3>
-                    <p class="mb-4 text-dark-text">Find something to be grateful for in a situation you dislike.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Gratitude Remix</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            Stuck in traffic? Be grateful for the podcast you can listen to or the chance to sit still for a moment.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Rather than simply listing things you are grateful for, this practice encourages you to find gratitude in challenges or difficult moments. By consciously seeking the lessons or growth opportunities within a tough experience, you can transform your relationship with adversity.</p>
                     </div>
                 </div>
-                
+
                 <!-- Reverse Assumption Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Reverse Assumption</h3>
-                    <p class="mb-4 text-dark-text">Explore the opposite of a strongly held belief to see if it holds up.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Reverse Assumption</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            If you assume "I am not good at public speaking," explore the idea that you are a natural communicator when you aren't trying to be perfect.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Take a core belief or assumption you hold about a problem and reverse it. What if the opposite were true? This technique helps to challenge your fixed ideas and can reveal new, unexpected solutions that were previously hidden by your assumptions.</p>
                     </div>
                 </div>
             </div>
@@ -249,69 +227,53 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Awe Spotting Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Awe Spotting</h3>
-                    <p class="mb-4 text-dark-text">Actively seek out small moments of awe in your day.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Awe Spotting</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            Look at the patterns on a tree leaf, the way the light hits a spiderweb, or the simple act of a bird landing on a branch.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Take a few moments each day to look for something that inspires a sense of awe. This could be the pattern of light on a wall, a powerful piece of music, or a stunning natural landscape. This practice helps to foster a sense of connection and wonder.</p>
                     </div>
                 </div>
 
                 <!-- Sensory Immersion Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Sensory Immersion</h3>
-                    <p class="mb-4 text-dark-text">Focus on a single sense (e.g., sound) for a few minutes and notice everything you can.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Sensory Immersion</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            Try listening only to the sounds around you, both near and far, without naming them.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Choose a single sensory input—sight, sound, touch, taste, or smell—and focus on it exclusively for a set period. Notice the nuances and details you usually miss. This exercise sharpens your awareness and helps you engage more fully with the present moment.</p>
                     </div>
                 </div>
 
                 <!-- State Shifting Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">State Shifting</h3>
-                    <p class="mb-4 text-dark-text">Change your physical state to affect your mental state.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">State Shifting</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            If you feel sluggish, stand up and stretch or go for a brisk walk to change your perspective.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Consciously change your physical posture and breathing to affect your emotional state. For example, to feel more confident, stand tall with your shoulders back and take a few deep breaths. This exercise demonstrates the powerful connection between your body and mind.</p>
                     </div>
                 </div>
 
                 <!-- Sensory Expansion Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Sensory Expansion</h3>
-                    <p class="mb-4 text-dark-text">Train your senses to notice more details in your surroundings.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Sensory Expansion</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            Spend a few minutes observing a familiar object, like a chair, and note every color, texture, and shadow.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Instead of focusing on one sense, this practice asks you to notice what all five senses are experiencing in a single moment. It's a grounding exercise that helps to pull you out of your thoughts and into the tangible world around you.</p>
                     </div>
                 </div>
             </div>
@@ -326,154 +288,118 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Pattern Breaking Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Pattern Breaking</h3>
-                    <p class="mb-4 text-dark-text">Consciously disrupt your daily routines.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Pattern Breaking</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            Take a different route to work, eat dinner for breakfast, or listen to a genre of music you never listen to.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Intentional disruption of a routine or habit, such as taking a different route to work or brushing your teeth with your non-dominant hand, can stimulate the brain and encourage new neural pathways to form. This can help you think more flexibly and creatively in other areas of your life.</p>
                     </div>
                 </div>
 
                 <!-- Constraint-Based Creation Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Constraint-Based Creation</h3>
-                    <p class="mb-4 text-dark-text">Create something with a specific, limiting constraint.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Constraint-Based Creation</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            Write a story using only one-syllable words or compose a song using only three notes.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Instead of trying to do everything, this exercise forces you to be creative by imposing a single, limiting rule. This could be writing a story with only a certain number of words, drawing a picture without lifting your pen, or creating a new dish with only three ingredients. Constraints often lead to surprising and innovative results.</p>
                     </div>
                 </div>
                 
                 <!-- Embodied Roleplay Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Embodied Roleplay</h3>
-                    <p class="mb-4 text-dark-text">Physically act out the perspective of another person or object.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Embodied Roleplay</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            To understand a customer's frustration, physically walk through their experience with a product or service.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Act out the solution to a problem. This involves using your body to explore new perspectives and solutions, rather than just thinking about them. For example, if you are designing a new product, physically pretend to use it to uncover flaws in your design.</p>
                     </div>
                 </div>
 
                 <!-- Forced Connection Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Forced Connection</h3>
-                    <p class="mb-4 text-dark-text">Find a connection between two completely unrelated ideas.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Forced Connection</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            How is a coffee cup like the universe? The forced connection can lead to creative breakthroughs.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Take two seemingly unrelated concepts and try to find a link between them. The more disparate the ideas, the better. This exercise strengthens your ability to see hidden patterns and connections, which is a key skill for creative problem-solving.</p>
                     </div>
                 </div>
 
                 <!-- Provocation Scenarios Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Provocation Scenarios</h3>
-                    <p class="mb-4 text-dark-text">Use an absurd statement as a starting point for problem-solving.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Provocation Scenarios</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            Imagine a scenario where "all money is a vegetable." This can force you to think about economic concepts in new ways.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Imagine an extreme or impossible scenario related to a problem you are trying to solve. For example, "What if gravity didn't exist?" or "What if money was obsolete?" By exploring these absurdities, you can challenge the underlying assumptions that are limiting your thinking and discover new, out-of-the-box ideas.</p>
                     </div>
                 </div>
 
                 <!-- Possibility Path Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Possibility Path</h3>
-                    <p class="mb-4 text-dark-text">Map out a path from an "impossible" idea to a concrete plan.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Possibility Path</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            Start with an impossible goal, like "end world hunger," and work backward, step by step, to find a starting point.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Take a single, small action and map out all the possible outcomes, both positive and negative. This helps to visualize the chain of cause and effect, allowing you to make more informed decisions and see a wider range of potential futures.</p>
                     </div>
                 </div>
 
                 <!-- Reversal Roll Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Reversal Roll</h3>
-                    <p class="mb-4 text-dark-text">Reverse the usual flow of a process or a story to find new insights.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Reversal Roll</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            In a business plan, start with the final outcome and work backward to the first step.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Instead of trying to improve a process, this exercise asks you to make it worse. By identifying what would make a system fail, you can uncover its weak points and innovate new ways to make it more robust. This is a powerful tool for developing resilience and finding creative solutions to problems.</p>
                     </div>
                 </div>
 
                 <!-- Living Systems Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Living Systems</h3>
-                    <p class="mb-4 text-dark-text">Observe a system (e.g., traffic) and try to understand its rules and rhythms.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Living Systems</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            Watch how people move through a public space, then think about how you could optimize that flow.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">This exercise involves looking at a problem as if it were a living system. What are its interconnected parts? What are its cycles? By understanding the problem's holistic nature, you can discover new leverage points for positive change.</p>
                     </div>
                 </div>
 
                 <!-- Creative Disruption Card -->
                 <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-4">Creative Disruption</h3>
-                    <p class="mb-4 text-dark-text">Intentionally introduce an element of chaos to an orderly process.</p>
-                    <div class="cursor-pointer py-4 border-t border-sophisticated-gray flex justify-between items-center" onclick="toggleDropdown(this)">
-                        <p class="text-dark-text"><strong>Example:</strong></p>
-                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300 rotate-0" viewBox="0 0 20 20" fill="currentColor">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Creative Disruption</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
-                    </div>
-                    <div class="collapsible-content">
-                        <p class="text-sm text-dark-text pt-2">
-                            In a meeting, ask everyone to draw their response to a question instead of talking.
-                        </p>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Intentionally introduce a random or unexpected element into a project. This could be a new tool, a new collaborator, or a new constraint. This practice challenges your assumptions and forces you to adapt, often leading to innovative and surprising results.</p>
                     </div>
                 </div>
             </div>
@@ -483,59 +409,40 @@
             <h2 class="text-2xl font-bold text-deep-indigo mb-4">Sample Weekly Practice</h2>
             <p class="mb-4 text-dark-text">
                 <ol class="list-decimal list-inside space-y-2 text-dark-text">
-                    <li>Monday: <strong>Question Storm</strong> on a work challenge.</li>
-                    <li>Tuesday: <strong>Sensory Immersion</strong> during your morning coffee.</li>
-                    <li>Wednesday: <strong>Gratitude Remix</strong> in a moment of frustration.</li>
-                    <li>Thursday: <strong>Reversal Roll</strong> on how you communicate.</li>
-                    <li>Friday: <strong>Awe Spotting</strong> on your commute.</li>
-                    <li>Saturday: <strong>Constraint-Based Creation</strong> with an art project.</li>
-                    <li>Sunday: Review the week, then <strong>Cognitive Reframe</strong> one thought you had.</li>
+                    <li><strong>Monday: Cognitive Reframe</strong>. Identify one negative thought and reframe it.</li>
+                    <li><strong>Tuesday: Sensory Immersion</strong>. Spend 5 minutes focusing on a single sense.</li>
+                    <li><strong>Wednesday: Pattern Breaking</strong>. Take a new route or change a small routine.</li>
+                    <li><strong>Thursday: Gratitude Remix</strong>. Find gratitude in a difficult situation.</li>
+                    <li><strong>Friday: Perspective Shift</strong>. Consider the opposite of an assumption you hold.</li>
+                    <li><strong>Saturday: Constraint-Based Creation</strong>. Create something with a single, limiting rule.</li>
+                    <li><strong>Sunday: Awe Spotting</strong>. Actively look for something beautiful or amazing in your surroundings.</li>
                 </ol>
             </p>
-            <p class="text-sm italic mt-4 text-center text-dark-text">
-                Curated by Keli Ballinger
-            </p>
-        </section>
-        
-        <!-- Section Separator -->
-        <div class="section-separator w-full my-8"></div>
-
-        <!-- CALL TO ACTION: COLLABORATE -->
-        <section class="my-8 text-center">
-            <div class="bg-deeper-sky-blue text-pure-white rounded-2xl p-12 shadow-2xl">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">
-                    Ready to Connect?
-                </h2>
-                <p class="text-lg md:text-xl font-light mb-6">
-                    Join the reVision community and share your story of transformation.
-                </p>
-                <a href="#" class="inline-block px-10 py-4 bg-[#FF6B6B] text-[#FFFFFF] rounded-full font-bold shadow-lg hover:bg-[#E65A5A] transition-colors duration-300 border-2 border-[#FFFFFF] animate-pulse-slow">
-                    Share Your Story
-                </a>
-            </div>
         </section>
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-deep-indigo text-gray-300 py-8">
-        <div class="container mx-auto px-4 md:px-8 text-center flex flex-col md:flex-row justify-between items-center">
-            <p class="mb-4 md:mb-0">&copy; 2025 reVision. Curated by Keli Ballinger.</p>
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="#" class="hover:underline">About</a></li>
-                    <li><a href="#" class="hover:underline">Contact</a></li>
-                </ul>
-            </nav>
+    <footer class="bg-deep-indigo text-pure-white py-8 text-center">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 reVision. All rights reserved.</p>
         </div>
     </footer>
     <script>
-        function toggleDropdown(element) {
-            const icon = element.querySelector('svg');
-            const content = element.nextElementSibling;
-            
-            icon.classList.toggle('rotate-180');
-            content.classList.toggle('expanded');
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const collapsibleTriggers = document.querySelectorAll('.collapsible-trigger');
+
+            collapsibleTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    // Find the collapsible content element, which is the next sibling
+                    const content = trigger.nextElementSibling;
+                    // Find the arrow icon within the button
+                    const arrow = trigger.querySelector('svg');
+
+                    // Toggle the 'expanded' class on the content
+                    content.classList.toggle('expanded');
+                    // Toggle the 'rotate-180' class on the arrow for visual feedback
+                    arrow.classList.toggle('rotate-180');
+                });
+            });
+        });
     </script>
 </body>
 </html>
