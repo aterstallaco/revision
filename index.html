@@ -1,1 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The reVISION Awards | Inaugural Short Film Competition</title>
+    <meta name="description" content="An inaugural short film competition celebrating stories that reveal the extraordinary potential in surprising places. When you change the way you see things, the things you see change.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --obsidian: #0A0F16;
+            --obsidian-light: #131B26;
+            --obsidian-lighter: #1C2836;
+            --platinum: #E5E4E2;
+            --platinum-muted: #B8B8B6;
+            --teal: #0891B2;
+            --teal-glow: #06B6D4;
+            --teal-deep: #0E7490;
+            --warm-white: #FAFAF9;
+            --warm-cream: #F5F5F4;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--obsidian);
+            color: var(--platinum);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Smooth scroll container */
+        .scroll-container {
+            position: relative;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 1.25rem;
+            letter-spacing: 0.01em;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section base */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 6rem 2rem;
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-slow {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+        }
+
+        .fade-in-slow.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            background: var(--obsidian);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 80% 60% at 50% 50%, 
+                    rgba(8, 145, 178, 0.15) 0%,
+                    rgba(8, 145, 178, 0.05) 30%,
+                    transparent 70%),
+                radial-gradient(ellipse 120% 100% at 50% 120%, 
+                    rgba(8, 145, 178, 0.1) 0%,
+                    transparent 50%),
+                var(--obsidian);
+            animation: pulse-subtle 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Eye/Portal effect */
+        .eye-portal {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .eye-outer {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center,
+                transparent 30%,
+                rgba(8, 145, 178, 0.03) 40%,
+                rgba(8, 145, 178, 0.08) 50%,
+                rgba(8, 145, 178, 0.03) 60%,
+                transparent 70%);
+            animation: eye-breathe 6s ease-in-out infinite;
+        }
+
+        .eye-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center,
+                rgba(6, 182, 212, 0.4) 0%,
+                rgba(8, 145, 178, 0.2) 30%,
+                transparent 70%);
+            filter: blur(20px);
+            animation: eye-pulse 4s ease-in-out infinite;
+        }
+
+        .eye-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: var(--teal-glow);
+            box-shadow: 
+                0 0 60px rgba(6, 182, 212, 0.6),
+                0 0 120px rgba(6, 182, 212, 0.3);
+            animation: core-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes eye-breathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.7; }
+        }
+
+        @keyframes eye-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.6; }
+        }
+
+        @keyframes core-glow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 60px rgba(6, 182, 212, 0.6),
+                    0 0 120px rgba(6, 182, 212, 0.3);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 80px rgba(6, 182, 212, 0.8),
+                    0 0 160px rgba(6, 182, 212, 0.4);
+            }
+        }
+
+        /* Hero content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 15vw, 10rem);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            position: relative;
+            animation: title-reveal 2s ease-out forwards;
+        }
+
+        @keyframes title-reveal {
+            0% { 
+                opacity: 0; 
+                letter-spacing: 0.5em;
+                filter: blur(10px);
+            }
+            100% { 
+                opacity: 1; 
+                letter-spacing: 0.1em;
+                filter: blur(0);
+            }
+        }
+
+        .hero-title .re {
+            color: var(--platinum-muted);
+            font-weight: 300;
+        }
+
+        .hero-title .vision {
+            color: var(--platinum);
+            position: relative;
+        }
+
+        .hero-title .vision::after {
+            content: '';
+            position: absolute;
+            bottom: 0.1em;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--teal), transparent);
+            opacity: 0;
+            animation: line-reveal 1s ease-out 1.5s forwards;
+        }
+
+        @keyframes line-reveal {
+            to { opacity: 1; }
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--platinum-muted);
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fade-up 1s ease-out 0.8s forwards;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-style: italic;
+            color: var(--teal-glow);
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fade-up 1s ease-out 1.2s forwards;
+        }
+
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fade-in-delayed 1s ease-out 2s forwards;
+        }
+
+        @keyframes fade-in-delayed {
+            to { opacity: 0.6; }
+        }
+
+        .scroll-indicator span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--platinum-muted);
+        }
+
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid var(--teal);
+            border-bottom: 2px solid var(--teal);
+            transform: rotate(45deg);
+            animation: scroll-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes scroll-bounce {
+            0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.6; }
+            50% { transform: rotate(45deg) translateY(8px); opacity: 1; }
+        }
+
+        /* ===== THE QUESTION SECTION ===== */
+        .question-section {
+            background: var(--obsidian);
+            min-height: 80vh;
+            position: relative;
+        }
+
+        .question-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 100% 50% at 50% 100%, 
+                rgba(8, 145, 178, 0.05) 0%, 
+                transparent 70%);
+        }
+
+        .question-text {
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-style: italic;
+            text-align: center;
+            max-width: 900px;
+            color: var(--platinum);
+            position: relative;
+        }
+
+        .question-text::before,
+        .question-text::after {
+            content: '"';
+            color: var(--teal);
+            font-size: 1.5em;
+            opacity: 0.5;
+        }
+
+        /* ===== THE ANSWER SECTION ===== */
+        .answer-section {
+            background: linear-gradient(180deg, 
+                var(--obsidian) 0%,
+                var(--obsidian-light) 50%,
+                var(--obsidian-lighter) 100%);
+            min-height: auto;
+            padding: 8rem 2rem;
+        }
+
+        .answer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .answer-intro {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--platinum);
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .answer-text {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: var(--platinum-muted);
+            text-align: center;
+        }
+
+        .answer-text p {
+            margin-bottom: 2rem;
+        }
+
+        .answer-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: var(--teal-glow);
+            font-style: italic;
+        }
+
+        /* ===== EXAMPLES SECTION ===== */
+        .examples-section {
+            background: var(--obsidian-lighter);
+            min-height: auto;
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .examples-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--teal), 
+                transparent);
+            opacity: 0.3;
+        }
+
+        .examples-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .examples-list {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--platinum);
+            line-height: 2.2;
+            margin-bottom: 3rem;
+        }
+
+        .example-item {
+            display: block;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .example-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .example-item .from {
+            color: var(--platinum-muted);
+        }
+
+        .example-item .to {
+            color: var(--teal-glow);
+        }
+
+        .example-item .arrow {
+            color: var(--platinum-muted);
+            margin: 0 0.5rem;
+        }
+
+        .examples-cta {
+            font-size: 1.5rem;
+            color: var(--platinum);
+            margin-bottom: 1.5rem;
+        }
+
+        .examples-link {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: var(--teal-glow);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--teal);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .examples-link:hover {
+            background: rgba(8, 145, 178, 0.1);
+            box-shadow: 0 0 30px rgba(8, 145, 178, 0.2);
+        }
+
+        /* ===== INVITATION SECTION ===== */
+        .invitation-section {
+            background: linear-gradient(180deg,
+                var(--obsidian-lighter) 0%,
+                var(--obsidian-light) 100%);
+            min-height: auto;
+            padding: 8rem 2rem;
+        }
+
+        .invitation-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .invitation-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .invitation-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            color: var(--platinum);
+            margin-bottom: 1rem;
+        }
+
+        .invitation-title .the {
+            font-weight: 300;
+            color: var(--platinum-muted);
+        }
+
+        .invitation-subtitle {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--platinum-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .invitation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .invitation-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        .invitation-box {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(229, 228, 226, 0.1);
+            border-radius: 4px;
+            transition: all 0.4s ease;
+        }
+
+        .invitation-box:hover {
+            background: rgba(8, 145, 178, 0.05);
+            border-color: rgba(8, 145, 178, 0.2);
+        }
+
+        .box-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 1.5rem;
+        }
+
+        .box-list {
+            list-style: none;
+        }
+
+        .box-list li {
+            font-size: 1.15rem;
+            color: var(--platinum-muted);
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .box-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 6px;
+            height: 6px;
+            background: var(--teal);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .judging-note {
+            font-size: 1.1rem;
+            color: var(--platinum-muted);
+            line-height: 1.9;
+        }
+
+        .judging-note strong {
+            color: var(--teal-glow);
+            font-weight: 500;
+        }
+
+        /* ===== AWAITS SECTION ===== */
+        .awaits-section {
+            background: var(--obsidian-light);
+            min-height: auto;
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .awaits-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--teal), 
+                transparent);
+            opacity: 0.3;
+        }
+
+        .awaits-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .awaits-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .awaits-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: var(--platinum);
+        }
+
+        .awaits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .awaits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .awaits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .await-card {
+            padding: 2rem;
+            background: rgba(10, 15, 22, 0.5);
+            border: 1px solid rgba(229, 228, 226, 0.05);
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .await-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--teal), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .await-card:hover::before {
+            opacity: 1;
+        }
+
+        .await-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(8, 145, 178, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .await-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .await-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--teal-glow);
+            margin-bottom: 0.75rem;
+        }
+
+        .await-desc {
+            font-size: 1.05rem;
+            color: var(--platinum-muted);
+            line-height: 1.7;
+        }
+
+        /* ===== CLIMAX SECTION ===== */
+        .climax-section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .climax-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 150% 100% at 50% 100%,
+                    rgba(8, 145, 178, 0.2) 0%,
+                    rgba(8, 145, 178, 0.1) 30%,
+                    transparent 60%),
+                radial-gradient(ellipse 100% 80% at 50% 0%,
+                    rgba(250, 250, 249, 0.05) 0%,
+                    transparent 50%),
+                linear-gradient(180deg,
+                    var(--obsidian-light) 0%,
+                    var(--obsidian) 100%);
+        }
+
+        .climax-glow {
+            position: absolute;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse at center,
+                rgba(8, 145, 178, 0.3) 0%,
+                rgba(8, 145, 178, 0.1) 40%,
+                transparent 70%);
+            filter: blur(60px);
+            animation: climax-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes climax-pulse {
+            0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        .climax-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .climax-statement {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 500;
+            color: var(--platinum);
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .climax-substatement {
+            font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+            font-style: italic;
+            color: var(--teal-glow);
+            margin-bottom: 4rem;
+        }
+
+        .climax-dates {
+            margin-bottom: 3rem;
+        }
+
+        .date-item {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--platinum-muted);
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.1em;
+        }
+
+        .date-item strong {
+            color: var(--platinum);
+            font-weight: 600;
+        }
+
+        .cta-button {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--obsidian);
+            background: var(--teal-glow);
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 3px;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 0 30px rgba(6, 182, 212, 0.4),
+                0 0 60px rgba(6, 182, 212, 0.2);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3), 
+                transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 50px rgba(6, 182, 212, 0.6),
+                0 0 100px rgba(6, 182, 212, 0.3);
+        }
+
+        .cta-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .contact-info {
+            margin-top: 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+        }
+
+        .contact-info a {
+            color: var(--platinum-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--teal-glow);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--obsidian);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(229, 228, 226, 0.05);
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--platinum-muted);
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo .re {
+            font-weight: 300;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--platinum-muted);
+            opacity: 0.6;
+        }
+
+        /* ===== DECORATIVE ELEMENTS ===== */
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--teal), transparent);
+            margin: 0 auto 2rem;
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* Focus states */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--teal);
+            outline-offset: 4px;
+        }
+
+        /* Skip link */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--teal);
+            color: var(--obsidian);
+            padding: 1rem 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Screen reader only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <div class="scroll-container">
+        <!-- HERO -->
+        <section class="hero" aria-label="Hero">
+            <div class="hero-bg" aria-hidden="true"></div>
+            <div class="eye-portal" aria-hidden="true">
+                <div class="eye-outer"></div>
+                <div class="eye-inner"></div>
+                <div class="eye-core"></div>
+            </div>
+            
+            <div class="hero-content">
+                <p class="hero-subtitle">The reVISION Awards</p>
+                <h1 class="hero-title"><span class="re">re</span><span class="vision">VISION</span></h1>
+                <p class="hero-subtitle" style="animation-delay: 1s;">Inaugural Short Film Competition</p>
+                <p class="hero-tagline">Illuminating the Power of Perspective</p>
+            </div>
+            
+            <div class="scroll-indicator" aria-hidden="true">
+                <span>Discover</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- MAIN CONTENT -->
+        <main id="main-content">
+            <!-- THE QUESTION -->
+            <section class="question-section" aria-label="The Question">
+                <p class="question-text fade-in">
+                    What happens when you change the way you look at things?
+                </p>
+            </section>
+
+            <!-- THE ANSWER -->
+            <section class="answer-section" aria-label="The Answer">
+                <div class="answer-content">
+                    <p class="answer-intro fade-in">
+                        That's the central question behind <strong>reVISION</strong>.
+                    </p>
+                    
+                    <div class="answer-text fade-in-slow">
+                        <p>
+                            The concept is built on a profound, powerful truth: <span class="highlight">when you change the way you see things, the things you see change.</span> It's the path where the unwanted, the discarded, the unvalued, or the simply ignored meet our attention, ingenuity, and resourcefulness, revealing a world of astonishing potential in unexpected places.
+                        </p>
+                        <p>
+                            reVISION inspires us to look with curiosity and wonder, not just at the places and things around us, but also within ourselves. This journey reveals how a shift in perspective can lead to brilliant creations, remarkable solutions, and extraordinary innovations, while also helping us discover the simple, unseen wonders and profound insights in our everyday lives.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EXAMPLES -->
+            <section class="examples-section" aria-label="Examples">
+                <div class="examples-content">
+                    <div class="examples-list">
+                        <span class="example-item">
+                            <span class="from">From discarded materials</span>
+                            <span class="arrow">→</span>
+                            <span class="to">valuable art and innovation.</span>
+                        </span>
+                        <span class="example-item">
+                            <span class="from">From overlooked spaces</span>
+                            <span class="arrow">→</span>
+                            <span class="to">vibrant communities.</span>
+                        </span>
+                        <span class="example-item">
+                            <span class="from">From scientific accident</span>
+                            <span class="arrow">→</span>
+                            <span class="to">world-changing discovery.</span>
+                        </span>
+                        <span class="example-item">
+                            <span class="from">From personal setback</span>
+                            <span class="arrow">→</span>
+                            <span class="to">unexpected superpower.</span>
+                        </span>
+                        <span class="example-item">
+                            <span class="from">And all those</span>
+                            <span class="arrow">→</span>
+                            <span class="to">yet to be revealed.</span>
+                        </span>
+                    </div>
+                    
+                    <p class="examples-cta fade-in">
+                        Your unique lens can illuminate powerful stories of reVISION.
+                    </p>
+                    
+                    <a href="https://www.revisionance.com" class="examples-link fade-in" target="_blank" rel="noopener">
+                        Need inspiration? Explore reVISION →
+                    </a>
+                </div>
+            </section>
+
+            <!-- THE INVITATION -->
+            <section class="invitation-section" aria-label="The Invitation">
+                <div class="invitation-content">
+                    <div class="invitation-header fade-in">
+                        <h2 class="invitation-title">
+                            <span class="the">The</span> reVISION Awards
+                        </h2>
+                        <p class="invitation-subtitle">
+                            An inaugural short film competition celebrating stories that reveal the extraordinary potential that exists in surprising places.
+                        </p>
+                    </div>
+                    
+                    <div class="invitation-grid">
+                        <div class="invitation-box fade-in">
+                            <h3 class="box-title">We Invite You to Submit</h3>
+                            <ul class="box-list">
+                                <li>3–10 minute short films</li>
+                                <li>Documentary, narrative, or experimental formats</li>
+                                <li>Original work — new or previously completed</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="invitation-box fade-in">
+                            <h3 class="box-title">Judging Criteria</h3>
+                            <p class="judging-note">
+                                Films will be judged on storytelling craft, cinematic quality, and emotional impact. <strong>Bonus consideration</strong> given for demonstrating Exceptional Ingenuity in the filmmaking process, including creative use of constraints, innovative narrative style and perspective, and resourcefully blending equipment and materials.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HERE'S WHAT AWAITS -->
+            <section class="awaits-section" aria-label="What Awaits">
+                <div class="awaits-content">
+                    <div class="awaits-header fade-in">
+                        <h2 class="awaits-title">Here's What Awaits</h2>
+                    </div>
+                    
+                    <div class="awaits-grid">
+                        <article class="await-card fade-in">
+                            <div class="await-icon">✦</div>
+                            <h3 class="await-title">Meaningful Impact</h3>
+                            <p class="await-desc">Your work inspires viewers to see the immense potential in the overlooked</p>
+                        </article>
+                        
+                        <article class="await-card fade-in">
+                            <div class="await-icon">◆</div>
+                            <h3 class="await-title">Top Tier Awards</h3>
+                            <p class="await-desc">$1,000 Cash Award + Personalized Mentorship</p>
+                        </article>
+                        
+                        <article class="await-card fade-in">
+                            <div class="await-icon">❖</div>
+                            <h3 class="await-title">Official Recognition</h3>
+                            <p class="await-desc">Finalists featured in curated showcase</p>
+                        </article>
+                        
+                        <article class="await-card fade-in">
+                            <div class="await-icon">◈</div>
+                            <h3 class="await-title">Curated Showcase</h3>
+                            <p class="await-desc">Reach communities passionate about sustainability, innovation, possibility, transformation</p>
+                        </article>
+                        
+                        <article class="await-card fade-in">
+                            <div class="await-icon">✧</div>
+                            <h3 class="await-title">Esteemed Recognition</h3>
+                            <p class="await-desc">Selected by award-winning filmmakers, innovation pioneers, visionary artists, reVISION champions</p>
+                        </article>
+                        
+                        <article class="await-card fade-in">
+                            <div class="await-icon">⬡</div>
+                            <h3 class="await-title">Creative Community</h3>
+                            <p class="await-desc">Join a collective of visionaries reimagining what's possible</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CLIMAX -->
+            <section class="climax-section" aria-label="Call to Action">
+                <div class="climax-bg" aria-hidden="true"></div>
+                <div class="climax-glow" aria-hidden="true"></div>
+                
+                <div class="climax-content">
+                    <h2 class="climax-statement fade-in">Reveal the extraordinary.</h2>
+                    <p class="climax-substatement fade-in">Inspire new ways of seeing.</p>
+                    
+                    <div class="climax-dates fade-in">
+                        <p class="date-item"><strong>Submission Deadline:</strong> June 30, 2026</p>
+                        <p class="date-item"><strong>Winners Announced:</strong> September 1, 2026</p>
+                    </div>
+                    
+                    <a href="https://revisionawards.com" class="cta-button fade-in" target="_blank" rel="noopener">
+                        Learn More
+                    </a>
+                    
+                    <p class="contact-info fade-in">
+                        <a href="mailto:info@revisionawards.com">info@revisionawards.com</a>
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <p class="footer-logo"><span class="re">re</span>VISION</p>
+            <p class="footer-text">© 2025 The reVISION Awards. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Add staggered delay for multiple elements
+                    const delay = entry.target.dataset.delay || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in, .fade-in-slow').forEach((el, index) => {
+            observer.observe(el);
+        });
+
+        // Staggered animation for example items
+        const exampleItems = document.querySelectorAll('.example-item');
+        const exampleObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                exampleItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, index * 200);
+                });
+                exampleObserver.disconnect();
+            }
+        }, { threshold: 0.3 });
+
+        if (exampleItems.length > 0) {
+            exampleObserver.observe(exampleItems[0].parentElement);
+        }
+
+        // Subtle parallax on hero elements
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const heroContent = document.querySelector('.hero-content');
+                    const eyePortal = document.querySelector('.eye-portal');
+                    
+                    if (scrolled < window.innerHeight) {
+                        const opacity = 1 - (scrolled / window.innerHeight);
+                        const translateY = scrolled * 0.3;
+                        
+                        if (heroContent) {
+                            heroContent.style.opacity = opacity;
+                            heroContent.style.transform = `translateY(${translateY}px)`;
+                        }
+                        
+                        if (eyePortal) {
+                            const scale = 1 + (scrolled / window.innerHeight) * 0.5;
+                            eyePortal.style.transform = `translate(-50%, -50%) scale(${scale})`;
+                            eyePortal.style.opacity = opacity;
+                        }
+                    }
+                    
+                    ticking = false;
+                });
+                
+                ticking = true;
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
