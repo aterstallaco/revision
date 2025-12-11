@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reVISION Awards | Submission Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts from your provided style guide -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom Color Variables based on your style context */
+        :root {
+            --obsidian: #1A1A1A; /* Primary Dark Color (Background) */
+            --teal: #008080;     /* Accent color */
+            --cream: #F5F5DC;    /* Primary Light Color (Text/Silver) */
+            --gold: #FFD700;     /* Secondary accent color */
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        body {
+            /* Text/Answers: Use the elegant Cormorant Garamond */
+            font-family: var(--font-serif); 
+            background-color: var(--obsidian);
+            color: var(--cream);
+            line-height: 1.7;
+        }
+
+        /* Styling the main headings with Montserrat */
+        .header-font {
+            font-family: var(--font-sans); 
+            font-weight: 700; 
+            color: var(--cream); 
+        }
+        
+        /* Style for the top-right navigation link */
+        .top-nav-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color 0.3s;
+            color: var(--teal); 
+        }
+        
+        .top-nav-link:hover {
+            color: var(--cream); 
+        }
+
+        /* Teaser line for visual separation */
+        .teaser-line {
+            height: 3px;
+            background: linear-gradient(90deg, var(--teal), rgba(0, 128, 128, 0.2), transparent); 
+            margin: 2rem auto;
+            width: 50%;
+        }
+
+        /* Custom form styling for fields */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 0.375rem; /* rounded-md */
+            background-color: rgba(255, 255, 255, 0.05); /* Slightly lighter background for input */
+            color: var(--cream);
+            font-family: var(--font-serif);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 0 1px var(--teal);
+        }
+
+        /* Submission Button Styling */
+        .submit-button {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            background-color: var(--teal);
+            color: var(--obsidian);
+            padding: 0.8rem 2.5rem;
+            border-radius: 9999px; /* rounded-full */
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 6px -1px rgba(0, 128, 128, 0.4), 0 2px 4px -2px rgba(0, 128, 128, 0.4);
+        }
+
+        .submit-button:hover {
+            background-color: var(--cream);
+            color: var(--obsidian);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 128, 128, 0.5), 0 4px 6px -4px rgba(0, 128, 128, 0.5);
+        }
+
+        .submit-button:disabled {
+            background-color: #4A5568; /* Grayed out */
+            color: #A0AEC0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Message Box Styling */
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--teal);
+            color: var(--obsidian);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            font-family: var(--font-sans);
+            text-align: center;
+        }
+
+        .message-box button {
+            margin-top: 1rem;
+            background: var(--obsidian);
+            color: var(--cream);
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            transition: background 0.2s;
+        }
+
+        .message-box button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div id="app-container" class="max-w-3xl mx-auto pt-16 pb-8 relative">
+        <!-- Home Link -->
+        <a href="/" class="top-nav-link" aria-label="Go to Home Page">
+            Home <span class="font-bold text-lg">→</span>
+        </a>
+
+        <header class="text-center mb-8">
+            <h1 class="header-font text-3xl md:text-4xl font-normal mb-4">
+                Submit Your Film
+            </h1>
+            <p class="font-light text-base md:text-lg max-w-xl mx-auto mb-6">
+                Ready to illuminate the power of perspective? Complete the form below to enter your film into the reVISION Awards.
+            </p>
+            <div class="teaser-line"></div>
+        </header>
+
+        <main>
+            <form id="submission-form" action="https://formspree.io/f/xjknazkq" method="POST" class="space-y-6">
+                <!-- Film Title -->
+                <div>
+                    <label for="filmTitle" class="block mb-2 font-medium">Film Title <span class="text-red-500">*</span></label>
+                    <input type="text" id="filmTitle" name="Film Title" required class="form-input">
+                </div>
+
+                <!-- Film Length (in minutes) -->
+                <div>
+                    <label for="filmLength" class="block mb-2 font-medium">Film Length (Minutes, 3-10 min limit) <span class="text-red-500">*</span></label>
+                    <input type="number" id="filmLength" name="Film Length (min)" required min="3" max="10" class="form-input">
+                </div>
+
+                <!-- Submission Link (Vimeo/YouTube) -->
+                <div>
+                    <label for="filmLink" class="block mb-2 font-medium">Film Link (Vimeo/YouTube/Unlisted) <span class="text-red-500">*</span></label>
+                    <p class="text-sm opacity-70 mb-1 font-sans">Must be a publicly accessible or unlisted link. Do not use an upload service.</p>
+                    <input type="url" id="filmLink" name="Film Link" required class="form-input" placeholder="e.g., https://vimeo.com/#######">
+                </div>
+                
+                <!-- Password (if link is password protected) -->
+                <div>
+                    <label for="filmPassword" class="block mb-2 font-medium">Password (if applicable)</label>
+                    <p class="text-sm opacity-70 mb-1 font-sans">If your link is password protected, please provide it here.</p>
+                    <input type="text" id="filmPassword" name="Film Password" class="form-input">
+                </div>
+
+                <!-- Filmmaker Name -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="firstName" class="block mb-2 font-medium">Filmmaker First Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="firstName" name="First Name" required class="form-input">
+                    </div>
+                    <div>
+                        <label for="lastName" class="block mb-2 font-medium">Filmmaker Last Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="lastName" name="Last Name" required class="form-input">
+                    </div>
+                </div>
+
+                <!-- Contact Email -->
+                <div>
+                    <label for="email" class="block mb-2 font-medium">Contact Email <span class="text-red-500">*</span></label>
+                    <input type="email" id="email" name="Email" required class="form-input">
+                </div>
+
+                <!-- Country/Region -->
+                <div>
+                    <label for="country" class="block mb-2 font-medium">Country / Region <span class="text-red-500">*</span></label>
+                    <input type="text" id="country" name="Country/Region" required class="form-input">
+                </div>
+                
+                <!-- Film Synopsis -->
+                <div>
+                    <label for="synopsis" class="block mb-2 font-medium">Film Synopsis (150 words max) <span class="text-red-500">*</span></label>
+                    <textarea id="synopsis" name="Synopsis" required rows="4" maxlength="1000" class="form-input"></textarea>
+                    <p class="text-xs opacity-70 mt-1 font-sans">This is how your film will be described if selected as a finalist.</p>
+                </div>
+
+                <!-- Submission Type -->
+                <div>
+                    <label class="block mb-2 font-medium">Submission Type <span class="text-red-500">*</span></label>
+                    <div class="flex flex-wrap gap-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Submission Type" value="Documentary" required class="form-radio text-teal-600 h-4 w-4 mr-2">
+                            Documentary
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Submission Type" value="Narrative" class="form-radio text-teal-600 h-4 w-4 mr-2">
+                            Narrative
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Submission Type" value="Experimental" class="form-radio text-teal-600 h-4 w-4 mr-2">
+                            Experimental
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Ingenuity Statement -->
+                <div>
+                    <label for="ingenuity" class="block mb-2 font-medium">Ingenuity Statement (Optional Bonus) <span class="text-sm opacity-70">(200 words max)</span></label>
+                    <p class="text-sm opacity-70 mb-1 font-sans">Describe how your film demonstrates Exceptional Ingenuity (creative use of constraints, resources, or perspective).</p>
+                    <textarea id="ingenuity" name="Ingenuity Statement" rows="3" maxlength="1500" class="form-input"></textarea>
+                </div>
+
+                <!-- Terms and Conditions Checkbox -->
+                <div class="flex items-start pt-4">
+                    <input type="checkbox" id="terms" name="Terms Accepted" value="Yes" required class="mt-1 h-4 w-4 text-teal-600 border-gray-300 rounded focus:ring-teal-500">
+                    <label for="terms" class="ml-3 block text-sm font-sans opacity-80">
+                        I confirm this is my original work and I agree to the <a href="/terms-and-conditions" target="_blank" class="text-teal-400 hover:text-teal-200 underline transition-colors">Official Rules & Terms</a>.
+                    </label>
+                </div>
+
+
+                <div class="text-center pt-8">
+                    <button type="submit" class="submit-button" id="submit-btn">
+                        Submit Film
+                    </button>
+                    <p id="loading-text" class="hidden mt-4 font-sans text-teal-400">Submitting...</p>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('submission-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const loadingText = document.getElementById('loading-text');
+            const appContainer = document.getElementById('app-container');
+
+            // Hide/Show message box function
+            function showMessage(message, isError = false) {
+                const box = document.createElement('div');
+                box.className = 'message-box';
+                box.innerHTML = `
+                    <h3 class="text-xl font-bold mb-3">${isError ? 'Submission Failed' : 'Submission Successful'}</h3>
+                    <p>${message}</p>
+                    <button onclick="this.parentNode.remove()">Close</button>
+                `;
+                document.body.appendChild(box);
+            }
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                submitBtn.disabled = true;
+                loadingText.classList.remove('hidden');
+
+                const data = new FormData(form);
+                
+                try {
+                    const response = await fetch(e.target.action, {
+                        method: form.method,
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        showMessage("Thank you for submitting to the reVISION Awards! You will receive a confirmation email shortly.");
+                        form.reset();
+                    } else {
+                        const responseData = await response.json();
+                        if (Object.hasOwnProperty.call(responseData, 'errors')) {
+                            // Formspree returns an object with errors for validation issues
+                            showMessage('There was an issue with your submission: ' + responseData.errors.map(err => err.field + ': ' + err.message).join('; '), true);
+                        } else {
+                            showMessage("Could not submit the form. Please check your network connection and try again.", true);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    showMessage("A network error occurred. Please try again.", true);
+                } finally {
+                    submitBtn.disabled = false;
+                    loadingText.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
