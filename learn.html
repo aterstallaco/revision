@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reVision: Learn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /*
+        Color Palette (Updated to match logo)
+        
+        --deep-indigo: #1B1F3B;
+        --deeper-sky-blue: #2980B9;
+        --sophisticated-gray: #95A5A6;
+        --clean-background: #ECF0F1;
+        --dark-text: #2C3E50;
+        --pure-white: #FFFFFF;
+        --refined-coral: #FF6B6B;
+        */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-text);
+            background-color: var(--clean-background);
+        }
+        .text-dark-text {
+            color: var(--dark-text);
+        }
+        .text-pure-white {
+            color: var(--pure-white);
+        }
+        .bg-deep-indigo {
+            background-color: var(--deep-indigo);
+        }
+        .text-deeper-sky-blue {
+            color: var(--deeper-sky-blue);
+        }
+        .bg-deeper-sky-blue {
+            background-color: var(--deeper-sky-blue);
+        }
+        .border-sophisticated-gray {
+            border-color: var(--sophisticated-gray);
+        }
+        .section-separator {
+            height: 1px;
+            background-color: var(--sophisticated-gray);
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .video-container video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        .animate-pulse-slow {
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        /* Styles for the hover effect on the cards */
+        .card-container {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(41, 128, 185, 0.25); /* More pronounced shadow on hover */
+        }
+        .card-shadow {
+            box-shadow: 0 4px 10px rgba(41, 128, 185, 0.2);
+        }
+
+        /* Styles for the collapsible sections */
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+            /* Initially remove all padding to prevent any text from peeking out */
+            padding: 0; 
+        }
+        .collapsible-content.expanded {
+            max-height: 500px; /* A large enough value to allow the content to expand */
+            /* Add padding back when the content is expanded */
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-clean-background antialiased">
+    <!-- Hero Section: Cleaned and resized -->
+    <header class="relative h-[40vh] flex items-center justify-center text-center overflow-hidden" style="border-top: 8px solid #FF6B6B;">
+        
+        <!-- Looping Video Background -->
+        <div class="video-container">
+            <video autoplay loop muted playsinline>
+                <source src="images/reVision_background.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <!-- SVG Wave at the bottom -->
+        <div class="absolute bottom-0 left-0 w-full z-20" style="filter: drop-shadow(0px -2px 10px rgba(41, 128, 185, 0.2));">
+            <svg class="block w-full" style="height: 120px;" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,80 Q720,20 1440,80 L1440,120 L0,120 Z" fill="white"></path>
+            </svg>
+        </div>
+        
+        <div class="relative z-30 p-6 md:p-12">
+            <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-deep-indigo mb-4">LEARN<span style="color: #FF6B6B;">.</span></h1>
+        </div>
+    </header>
+    <main class="bg-pure-white container mx-auto px-4 md:px-8 py-8">
+        <p class="max-w-3xl mx-auto text-lg md:text-xl text-center text-dark-text mb-8">
+            Remarkable Possibilities and Potential await
+        </p>
+
+        <!-- Thought Experiments Section -->
+        <section class="my-8">
+            <h2 class="text-3xl font-bold text-deep-indigo text-center mb-8">Thought Experiments</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cognitive Reframe Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Cognitive Reframe</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">This practice challenges you to intentionally look for a different way to interpret a situation. Instead of viewing a setback as a failure, you can reframe it as a learning opportunity or a sign that you need to shift your approach. This helps in developing a more flexible and resilient mindset.</p>
+                    </div>
+                </div>
+
+                <!-- Perspective Shift Starter Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Perspective Shift Starter</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Consider a challenge you are facing from the point of view of someone else. What would a wise mentor, a young child, or even a rival see? This exercise helps you break free from your own biases and uncover new solutions you might have overlooked. It promotes empathy and opens up new avenues for possibility.</p>
+                    </div>
+                </div>
+
+                <!-- Question Storm Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Question Storm</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Instead of brainstorming for answers, this exercise focuses on generating as many questions as possible about a single topic or problem. This shifts your focus from a search for certainty to a pursuit of curiosity, which can lead to unexpected and innovative insights.</p>
+                    </div>
+                </div>
+
+                <!-- Parallax Thinking Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Parallax Thinking</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">The parallax effect is the apparent displacement of an object when viewed from different positions. In thinking, this means considering a problem from multiple, simultaneous angles, like viewing a statue from the front, side, and back at once. This practice helps to create a richer, more comprehensive understanding.</p>
+                    </div>
+                </div>
+
+                <!-- Gratitude Remix Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Gratitude Remix</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Rather than simply listing things you are grateful for, this practice encourages you to find gratitude in challenges or difficult moments. By consciously seeking the lessons or growth opportunities within a tough experience, you can transform your relationship with adversity.</p>
+                    </div>
+                </div>
+
+                <!-- Reverse Assumption Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Reverse Assumption</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Take a core belief or assumption you hold about a problem and reverse it. What if the opposite were true? This technique helps to challenge your fixed ideas and can reveal new, unexpected solutions that were previously hidden by your assumptions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Separator -->
+        <div class="section-separator w-full my-8"></div>
+
+        <!-- Sensory & Embodied Exercises Section -->
+        <section class="my-8">
+            <h2 class="text-3xl font-bold text-deep-indigo text-center mb-8">Sensory & Embodied Exercises</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Awe Spotting Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Awe Spotting</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Take a few moments each day to look for something that inspires a sense of awe. This could be the pattern of light on a wall, a powerful piece of music, or a stunning natural landscape. This practice helps to foster a sense of connection and wonder.</p>
+                    </div>
+                </div>
+
+                <!-- Sensory Immersion Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Sensory Immersion</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Choose a single sensory input—sight, sound, touch, taste, or smell—and focus on it exclusively for a set period. Notice the nuances and details you usually miss. This exercise sharpens your awareness and helps you engage more fully with the present moment.</p>
+                    </div>
+                </div>
+
+                <!-- State Shifting Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">State Shifting</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Consciously change your physical posture and breathing to affect your emotional state. For example, to feel more confident, stand tall with your shoulders back and take a few deep breaths. This exercise demonstrates the powerful connection between your body and mind.</p>
+                    </div>
+                </div>
+
+                <!-- Sensory Expansion Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Sensory Expansion</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Instead of focusing on one sense, this practice asks you to notice what all five senses are experiencing in a single moment. It's a grounding exercise that helps to pull you out of your thoughts and into the tangible world around you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section Separator -->
+        <div class="section-separator w-full my-8"></div>
+
+        <!-- Creative Tools & Challenges Section -->
+        <section class="my-8">
+            <h2 class="text-3xl font-bold text-deep-indigo text-center mb-8">Creative Tools & Challenges</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pattern Breaking Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Pattern Breaking</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Intentional disruption of a routine or habit, such as taking a different route to work or brushing your teeth with your non-dominant hand, can stimulate the brain and encourage new neural pathways to form. This can help you think more flexibly and creatively in other areas of your life.</p>
+                    </div>
+                </div>
+
+                <!-- Constraint-Based Creation Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Constraint-Based Creation</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Instead of trying to do everything, this exercise forces you to be creative by imposing a single, limiting rule. This could be writing a story with only a certain number of words, drawing a picture without lifting your pen, or creating a new dish with only three ingredients. Constraints often lead to surprising and innovative results.</p>
+                    </div>
+                </div>
+                
+                <!-- Embodied Roleplay Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Embodied Roleplay</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Act out the solution to a problem. This involves using your body to explore new perspectives and solutions, rather than just thinking about them. For example, if you are designing a new product, physically pretend to use it to uncover flaws in your design.</p>
+                    </div>
+                </div>
+
+                <!-- Forced Connection Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Forced Connection</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Take two seemingly unrelated concepts and try to find a link between them. The more disparate the ideas, the better. This exercise strengthens your ability to see hidden patterns and connections, which is a key skill for creative problem-solving.</p>
+                    </div>
+                </div>
+
+                <!-- Provocation Scenarios Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Provocation Scenarios</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Imagine an extreme or impossible scenario related to a problem you are trying to solve. For example, "What if gravity didn't exist?" or "What if money was obsolete?" By exploring these absurdities, you can challenge the underlying assumptions that are limiting your thinking and discover new, out-of-the-box ideas.</p>
+                    </div>
+                </div>
+
+                <!-- Possibility Path Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Possibility Path</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Take a single, small action and map out all the possible outcomes, both positive and negative. This helps to visualize the chain of cause and effect, allowing you to make more informed decisions and see a wider range of potential futures.</p>
+                    </div>
+                </div>
+
+                <!-- Reversal Roll Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Reversal Roll</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Instead of trying to improve a process, this exercise asks you to make it worse. By identifying what would make a system fail, you can uncover its weak points and innovate new ways to make it more robust. This is a powerful tool for developing resilience and finding creative solutions to problems.</p>
+                    </div>
+                </div>
+
+                <!-- Living Systems Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Living Systems</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">This exercise involves looking at a problem as if it were a living system. What are its interconnected parts? What are its cycles? By understanding the problem's holistic nature, you can discover new leverage points for positive change.</p>
+                    </div>
+                </div>
+
+                <!-- Creative Disruption Card -->
+                <div class="bg-pure-white rounded-xl card-shadow p-8 flex flex-col justify-start card-container">
+                    <button class="flex justify-between items-center w-full focus:outline-none collapsible-trigger">
+                        <h3 class="text-2xl font-bold text-deep-indigo text-left">Creative Disruption</h3>
+                        <svg class="h-5 w-5 text-deeper-sky-blue transform transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div class="collapsible-content border-t border-sophisticated-gray">
+                        <p class="text-base text-dark-text mt-4">Intentionally introduce a random or unexpected element into a project. This could be a new tool, a new collaborator, or a new constraint. This practice challenges your assumptions and forces you to adapt, often leading to innovative and surprising results.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-12">
+            <h2 class="text-2xl font-bold text-deep-indigo mb-4">Sample Weekly Practice</h2>
+            <p class="mb-4 text-dark-text">
+                <ol class="list-decimal list-inside space-y-2 text-dark-text">
+                    <li><strong>Monday: Cognitive Reframe</strong>. Identify one negative thought and reframe it.</li>
+                    <li><strong>Tuesday: Sensory Immersion</strong>. Spend 5 minutes focusing on a single sense.</li>
+                    <li><strong>Wednesday: Pattern Breaking</strong>. Take a new route or change a small routine.</li>
+                    <li><strong>Thursday: Gratitude Remix</strong>. Find gratitude in a difficult situation.</li>
+                    <li><strong>Friday: Perspective Shift</strong>. Consider the opposite of an assumption you hold.</li>
+                    <li><strong>Saturday: Constraint-Based Creation</strong>. Create something with a single, limiting rule.</li>
+                    <li><strong>Sunday: Awe Spotting</strong>. Actively look for something beautiful or amazing in your surroundings.</li>
+                </ol>
+            </p>
+        </section>
+    </main>
+    <footer class="bg-deep-indigo text-pure-white py-8 text-center">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 reVision. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const collapsibleTriggers = document.querySelectorAll('.collapsible-trigger');
+
+            collapsibleTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    // Find the collapsible content element, which is the next sibling
+                    const content = trigger.nextElementSibling;
+                    // Find the arrow icon within the button
+                    const arrow = trigger.querySelector('svg');
+
+                    // Toggle the 'expanded' class on the content
+                    content.classList.toggle('expanded');
+                    // Toggle the 'rotate-180' class on the arrow for visual feedback
+                    arrow.classList.toggle('rotate-180');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
