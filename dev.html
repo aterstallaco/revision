@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>reVISION - Change the way you see things</title>
+    <meta name="description" content="When you change the way you see things, the things you see change. Explore the astonishing potential that exists in surprising places through stories, practices, and experiences.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -41,7 +42,7 @@
             z-index: 1000;
             padding: 1.5rem 4rem;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
             background: transparent;
             opacity: 0;
@@ -55,6 +56,22 @@
             background: rgba(250, 250, 249, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(10, 15, 22, 0.05);
+        }
+
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+        }
+
+        .nav-logo .re {
+            color: var(--obsidian);
+        }
+
+        .nav-logo .vision {
+            color: var(--teal);
         }
 
         .nav-links {
@@ -492,17 +509,69 @@
 
         /* Footer */
         footer {
-            padding: 4rem;
+            padding: 4rem 2rem;
             text-align: center;
             background: var(--obsidian);
             color: var(--platinum);
         }
 
-        footer p {
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-weight: 300;
+            font-size: 1.3rem;
             letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo .re {
+            color: var(--platinum);
+        }
+
+        .footer-logo .vision {
+            color: var(--teal);
+        }
+
+        .footer-tagline {
+            font-size: 1rem;
+            font-style: italic;
             opacity: 0.6;
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav {
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--platinum);
+        }
+
+        .footer-divider {
+            margin: 0 1.25rem;
+            opacity: 0.5;
+            color: var(--teal);
+        }
+
+        .footer-copyright {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            opacity: 0.4;
         }
 
         /* Responsive */
@@ -580,9 +649,12 @@
 </head>
 <body>
     <nav id="nav">
+        <a href="index.html" class="nav-logo">
+            <span class="re">re</span><span class="vision">VISION</span>
+        </a>
         <ul class="nav-links">
             <li><a href="#discover">Discover</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="learn.html">Learn</a></li>
         </ul>
     </nav>
 
@@ -709,8 +781,8 @@
         </div>
     </section>
 
-    <!-- LEARN Section -->
-    <section class="section-block coming-soon-section">
+    <!-- LEARN Section - NOW ACTIVE -->
+    <section id="learn" class="section-block">
         <div class="section-inner">
             <div class="section-image">
                 <div class="image-container">
@@ -718,12 +790,12 @@
                 </div>
             </div>
             <div class="section-content">
-                <div class="coming-soon-badge">Coming Soon</div>
                 <div class="section-label">Grow</div>
                 <h2 class="section-title">LEARN</h2>
                 <p class="section-description">
                     Develop your capacity for perspective-shifting. Resources, tools, and training in divergent thinking, metaphor, and systems thinking.
                 </p>
+                <a href="learn.html" class="section-cta">Start Learning</a>
             </div>
         </div>
     </section>
@@ -748,7 +820,18 @@
     </section>
 
     <footer>
-        <p>Created by Keli Ballinger • reVISION © 2024</p>
+        <div class="footer-content">
+            <p class="footer-logo"><span class="re">re</span><span class="vision">VISION</span></p>
+            <p class="footer-tagline">Exploring the astonishing potential that exists in surprising places</p>
+            <div class="footer-nav">
+                <a href="about.html">About</a>
+                <span class="footer-divider">·</span>
+                <a href="faq.html">FAQ</a>
+                <span class="footer-divider">·</span>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="footer-copyright">© 2025 reVISION. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
@@ -793,7 +876,10 @@
         }, { threshold: 0.2 });
 
         sections.forEach(section => {
-            section.style.opacity = '0';
+            // Don't override coming-soon opacity
+            if (!section.classList.contains('coming-soon-section')) {
+                section.style.opacity = '0';
+            }
             section.style.transform = 'translateY(50px)';
             section.style.transition = 'all 1s ease';
             observer.observe(section);
