@@ -4,7 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ | reVISION</title>
-    <meta name="description" content="Learn about reVISION - exploring the astonishing potential that exists in surprising places.">
+    <meta name="description" content="Frequently asked questions about reVISION and how you can participate.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Twitter Card / Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FAQ | reVISION">
+    <meta property="og:description" content="Frequently asked questions about reVISION and how you can participate.">
+    <meta property="og:image" content="https://www.revisionance.com/images/og-image.jpg">
+    <meta property="og:url" content="https://www.revisionance.com/faq.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FAQ | reVISION">
+    <meta name="twitter:description" content="Frequently asked questions about reVISION and how you can participate.">
+    <meta name="twitter:image" content="https://www.revisionance.com/images/og-image.jpg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -123,24 +141,21 @@
             font-weight: 300;
             letter-spacing: 0.15em;
             color: var(--obsidian);
+            margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
         }
 
+        /* Clean simple underline - positioned lower */
         .page-title::after {
             content: '';
             position: absolute;
-            bottom: -0.75rem;
+            bottom: -1rem;
             left: 50%;
             transform: translateX(-50%);
             width: 60px;
             height: 1px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--teal) 20%, 
-                var(--teal) 80%, 
-                transparent 100%
-            );
+            background: var(--teal);
         }
 
         /* Main Content */
@@ -315,7 +330,7 @@
             <p class="footer-logo"><span class="re">re</span><span class="vision">VISION</span></p>
             <p class="footer-tagline">Exploring the astonishing potential that exists in surprising places</p>
             <div class="footer-nav">
-                <a href="about.html">FAQ</a>
+                <a href="faq.html">About</a>
                 <span class="footer-divider">·</span>
                 <a href="faq.html">FAQ</a>
                 <span class="footer-divider">·</span>
