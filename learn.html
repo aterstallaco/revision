@@ -155,24 +155,24 @@
 
         .page-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(3.5rem, 10vw, 6rem);
+            font-size: clamp(3rem, 8vw, 5rem);
             font-weight: 300;
-            letter-spacing: 0.25em;
-            color: var(--platinum);
-            margin-bottom: 1.5rem;
+            letter-spacing: 0.2em;
+            color: var(--teal);
+            margin-bottom: 2.5rem;
             position: relative;
             display: inline-block;
         }
 
-        /* Teal accent underline */
+        /* Clean simple underline - positioned lower */
         .page-title::after {
             content: '';
             position: absolute;
-            bottom: -0.3rem;
+            bottom: -1.5rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 2px;
+            width: 80px;
+            height: 1px;
             background: var(--teal);
         }
 
@@ -183,7 +183,7 @@
             opacity: 0.7;
             font-weight: 300;
             max-width: 550px;
-            margin: 1rem auto 0;
+            margin: 1.5rem auto 0;
             line-height: 1.7;
         }
 
@@ -206,18 +206,18 @@
             letter-spacing: 0.1em;
             color: var(--obsidian);
             line-height: 1.2;
-            position: relative;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
         }
 
+        /* Inline line before title - like a prompt */
         .section-title::before {
             content: '';
-            position: absolute;
-            left: 0;
-            bottom: -0.5rem;
             width: 40px;
-            height: 2px;
+            height: 1px;
             background: var(--teal);
+            flex-shrink: 0;
         }
 
         /* Exercise Cards Grid */
@@ -234,23 +234,26 @@
             border: 1px solid rgba(8, 145, 178, 0.12);
             position: relative;
             cursor: pointer;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            transform: rotate(-0.5deg);
             box-shadow: 
                 12px 12px 40px rgba(10, 15, 22, 0.1),
                 -6px -6px 30px rgba(250, 250, 249, 0.8);
         }
 
-        .exercise-card:nth-child(even) {
-            transform: rotate(0.5deg);
-        }
-
         .exercise-card:hover {
-            transform: rotate(0deg) translateY(-4px);
             box-shadow: 
                 20px 20px 60px rgba(10, 15, 22, 0.15),
                 -10px -10px 40px rgba(250, 250, 249, 0.9),
                 0 0 0 1px rgba(8, 145, 178, 0.2);
+        }
+
+        /* Expanded card - magical reveal state */
+        .exercise-card.expanded {
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.06) 0%, rgba(250, 250, 249, 0.98) 100%);
+            box-shadow: 
+                20px 20px 60px rgba(10, 15, 22, 0.12),
+                -10px -10px 40px rgba(250, 250, 249, 0.9),
+                0 0 50px rgba(8, 145, 178, 0.1),
+                0 0 0 1px rgba(8, 145, 178, 0.18);
         }
 
         .exercise-card-header {
@@ -455,18 +458,57 @@
             }
         }
 
-        /* Intersection Observer Animations */
-        .section-header,
-        .exercises-grid {
+        /* Intersection Observer Animations - Enhanced reveal */
+        .section-header {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .section-header.visible,
-        .exercises-grid.visible {
+        .section-header.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .exercises-grid {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .exercises-grid.visible {
+            opacity: 1;
+        }
+
+        /* Cards animate in with stagger and subtle scale */
+        .exercise-card {
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .exercises-grid.visible .exercise-card {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Staggered animation delays */
+        .exercises-grid.visible .exercise-card:nth-child(1) { transition-delay: 0.1s; }
+        .exercises-grid.visible .exercise-card:nth-child(2) { transition-delay: 0.2s; }
+        .exercises-grid.visible .exercise-card:nth-child(3) { transition-delay: 0.3s; }
+        .exercises-grid.visible .exercise-card:nth-child(4) { transition-delay: 0.4s; }
+        .exercises-grid.visible .exercise-card:nth-child(5) { transition-delay: 0.5s; }
+        .exercises-grid.visible .exercise-card:nth-child(6) { transition-delay: 0.6s; }
+        .exercises-grid.visible .exercise-card:nth-child(7) { transition-delay: 0.7s; }
+        .exercises-grid.visible .exercise-card:nth-child(8) { transition-delay: 0.8s; }
+        .exercises-grid.visible .exercise-card:nth-child(9) { transition-delay: 0.9s; }
+
+        /* Hover and expanded states */
+        .exercises-grid.visible .exercise-card:hover {
+            transform: translateY(-4px) scale(1);
+        }
+
+        .exercises-grid.visible .exercise-card.expanded {
+            transform: translateY(-4px) scale(1);
         }
     </style>
 </head>
@@ -478,6 +520,8 @@
         <ul class="nav-links">
             <li><a href="index.html#discover">Discover</a></li>
             <li><a href="learn.html" class="active">Learn</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="connect.html">Connect</a></li>
         </ul>
     </nav>
 
@@ -487,11 +531,9 @@
             <h1 class="page-title">LEARN</h1>
             <p class="page-subtitle">Develop your capacity for seeing differently</p>
         </div>
-        
-        <!-- Curved bottom edge -->
         <div class="header-curve">
             <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-                <path d="M0,60 Q720,0 1440,60 L1440,80 L0,80 Z" fill="var(--warm-white)"/>
+                <path d="M0,20 Q720,80 1440,20 L1440,80 L0,80 Z" fill="var(--warm-white)"/>
             </svg>
         </div>
     </header>
