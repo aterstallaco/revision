@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | reVISION</title>
+    <meta name="description" content="Learn about reVISION - exploring the astonishing potential that exists in surprising places.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --obsidian: #0A0F16;
+            --platinum: #E5E4E2;
+            --teal: #0891B2;
+            --warm-white: #FAFAF9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--warm-white);
+            color: var(--obsidian);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 250, 249, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(10, 15, 22, 0.05);
+        }
+
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+        }
+
+        .nav-logo .re {
+            color: var(--obsidian);
+        }
+
+        .nav-logo .vision {
+            color: var(--teal);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--obsidian);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--teal);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Light Page Header - smaller, simpler */
+        .page-header {
+            padding: 8rem 4rem 3rem;
+            text-align: center;
+            background: var(--warm-white);
+            border-bottom: 1px solid rgba(10, 15, 22, 0.08);
+        }
+
+        .page-header-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: var(--obsidian);
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--teal) 20%, 
+                var(--teal) 80%, 
+                transparent 100%
+            );
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 4rem;
+        }
+
+        .content {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--teal);
+            border: 1px solid var(--teal);
+            padding: 0.6rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .content-text {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: var(--obsidian);
+            opacity: 0.75;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--obsidian);
+            color: var(--platinum);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 1.3rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo .re {
+            color: var(--platinum);
+        }
+
+        .footer-logo .vision {
+            color: var(--teal);
+        }
+
+        .footer-tagline {
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0.6;
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav {
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--platinum);
+        }
+
+        .footer-divider {
+            margin: 0 1.25rem;
+            opacity: 0.5;
+            color: var(--teal);
+        }
+
+        .footer-copyright {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            opacity: 0.4;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+
+            .page-header {
+                padding: 7rem 2rem 2rem;
+            }
+
+            main {
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-logo {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 0.75rem;
+            }
+
+            .nav-links a {
+                font-size: 0.65rem;
+                letter-spacing: 0.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <span class="re">re</span><span class="vision">VISION</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="discover.html">Discover</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="connect.html">Connect</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title">FAQ</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="content">
+            <div class="coming-soon-badge">Coming Soon</div>
+            <p class="content-text">
+                Answers to frequently asked questions about reVISION, how it works, and how you can participate.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-logo"><span class="re">re</span><span class="vision">VISION</span></p>
+            <p class="footer-tagline">Exploring the astonishing potential that exists in surprising places</p>
+            <div class="footer-nav">
+                <a href="about.html">FAQ</a>
+                <span class="footer-divider">·</span>
+                <a href="faq.html">FAQ</a>
+                <span class="footer-divider">·</span>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="footer-copyright">© 2025 reVISION. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
