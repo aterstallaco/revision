@@ -420,6 +420,7 @@
 
         .section-image img {
             width: 100%;
+            max-width: 500px;
             aspect-ratio: 4/3;
             object-fit: cover;
             border: 1px solid rgba(8, 145, 178, 0.2);
@@ -493,6 +494,10 @@
         }
 
         /* Reverse layout for alternating sections */
+        .section-block:nth-child(odd) .section-inner {
+            grid-template-columns: 1fr 1fr;
+        }
+
         .section-block:nth-child(even) .section-inner {
             grid-template-columns: 1fr 1fr;
         }
@@ -636,17 +641,16 @@
             }
 
             .section-inner {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 3rem 1.5rem;
+                gap: 3rem;
+                padding: 4rem 2rem;
             }
 
             .section-block {
                 min-height: auto;
             }
 
-            .section-block:nth-child(even) .section-image {
-                order: 1;
+            .section-image img {
+                max-width: 350px;
             }
 
             .section-title {
@@ -669,6 +673,23 @@
 
             .nav-logo {
                 font-size: 1.2rem;
+            }
+
+            /* Stack sections on mobile */
+            .section-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 3rem 1.5rem;
+            }
+
+            .section-block:nth-child(even) .section-image {
+                order: 1;
+            }
+
+            .section-image img {
+                max-width: 400px;
+                margin: 0 auto;
+                display: block;
             }
 
             /* Hide regular nav links on mobile */
@@ -878,7 +899,7 @@
         <div class="section-inner">
             <div class="section-image">
                 <div class="image-container">
-                    <img src="learn-image.jpg" alt="reVISION Learn - a seedling sprouting through fallen leaves toward forest light, representing growth and developing new ways of seeing">
+                    <img src="learn-image.jpg" alt="Seedling sprouting through fallen leaves toward light - developing capacity for growth and new perspective">
                 </div>
             </div>
             <div class="section-content">
