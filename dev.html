@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reVISION - Change the way you see things</title>
+    <meta name="description" content="When you change the way you see things, the things you see change. Explore the astonishing potential that exists in surprising places through stories, practices, and experiences.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Twitter Card / Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="reVISION - Change the way you see things">
+    <meta property="og:description" content="When you change the way you see things, the things you see change. Explore the astonishing potential that exists in surprising places.">
+    <meta property="og:image" content="https://www.revisionance.com/images/og-image.jpg">
+    <meta property="og:url" content="https://www.revisionance.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="reVISION - Change the way you see things">
+    <meta name="twitter:description" content="When you change the way you see things, the things you see change. Explore the astonishing potential that exists in surprising places.">
+    <meta name="twitter:image" content="https://www.revisionance.com/images/og-image.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --obsidian: #0A0F16;
+            --platinum: #E5E4E2;
+            --teal: #0891B2;
+            --warm-white: #FAFAF9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--warm-white);
+            color: var(--obsidian);
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            opacity: 0;
+            transition: all 0.4s ease;
+            pointer-events: none;
+        }
+
+        nav.visible {
+            opacity: 1;
+            pointer-events: all;
+            background: rgba(250, 250, 249, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(10, 15, 22, 0.05);
+        }
+
+        .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+        }
+
+        .nav-logo .re {
+            color: var(--obsidian);
+        }
+
+        .nav-logo .vision {
+            color: var(--teal);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--obsidian);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--teal);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--obsidian);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 50% 50%, rgba(8, 145, 178, 0.03) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 20% 80%, rgba(229, 228, 226, 0.02) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 60% at 80% 20%, rgba(8, 145, 178, 0.02) 0%, transparent 50%);
+            animation: backgroundPulse 12s ease-in-out infinite;
+        }
+
+        @keyframes backgroundPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .quote-line {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.4rem, 4vw, 2.4rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.8;
+            letter-spacing: 0.02em;
+        }
+
+        .quote-line-1 {
+            color: var(--platinum);
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeInUp 1.8s ease-out 0.5s forwards;
+        }
+
+        .quote-line-2 {
+            color: var(--teal);
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeInUp 1.8s ease-out 2.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: clamp(3rem, 11vw, 7.5rem);
+            letter-spacing: 0.25em;
+            margin: 0.5em 0;
+            opacity: 0;
+            transform: scale(0.95);
+            max-width: 100%;
+            word-break: break-word;
+        }
+
+        .hero-logo .re {
+            color: var(--platinum);
+        }
+
+        .hero-logo .vision {
+            color: var(--teal);
+        }
+
+        .hero-container.transformed .quote-line-1,
+        .hero-container.transformed .quote-line-2 {
+            opacity: 0 !important;
+            transition: opacity 0.8s ease;
+        }
+
+        .hero-container.transformed .hero-logo {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 1.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--teal);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 20s infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 4s; }
+        .particle:nth-child(3) { left: 35%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 50%; animation-delay: 6s; }
+        .particle:nth-child(5) { left: 65%; animation-delay: 1s; }
+        .particle:nth-child(6) { left: 75%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 85%; animation-delay: 3s; }
+        .particle:nth-child(8) { left: 90%; animation-delay: 7s; }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, var(--obsidian) 100%);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .reveal-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .reveal-indicator.visible {
+            opacity: 1;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .reveal-indicator:hover {
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .reveal-indicator::before {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(180deg, transparent 0%, var(--teal) 100%);
+            margin: 0 auto 10px;
+        }
+
+        .reveal-indicator::after {
+            content: 'REVEAL';
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--teal);
+            display: block;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Manifesto Section */
+        .manifesto {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 4rem;
+            text-align: center;
+        }
+
+        .manifesto-quote {
+            font-size: 3.5rem;
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--obsidian);
+            margin-bottom: 3rem;
+            letter-spacing: 0.02em;
+        }
+
+        .manifesto-text {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: var(--obsidian);
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        .manifesto-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Section Blocks */
+        .section-block {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-top: 1px solid rgba(10, 15, 22, 0.08);
+        }
+
+        .section-block:nth-child(even) {
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.02) 0%, transparent 100%);
+        }
+
+        .section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .section-image {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .image-container {
+            position: relative;
+            transform: rotate(-2deg);
+            transition: transform 0.6s ease;
+            max-width: 100%;
+        }
+
+        .section-block:hover .image-container {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .image-placeholder {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.1) 0%, rgba(229, 228, 226, 0.2) 100%);
+            border: 1px solid rgba(8, 145, 178, 0.2);
+            box-shadow: 
+                20px 20px 60px rgba(10, 15, 22, 0.15),
+                -10px -10px 40px rgba(250, 250, 249, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            color: var(--teal);
+            text-transform: uppercase;
+            max-width: 100%;
+        }
+
+        .section-image img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border: 1px solid rgba(8, 145, 178, 0.2);
+            box-shadow: 
+                20px 20px 60px rgba(10, 15, 22, 0.15),
+                -10px -10px 40px rgba(250, 250, 249, 0.5);
+        }
+
+        .section-content {
+            padding: 2rem 0;
+        }
+
+        .section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: var(--obsidian);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--obsidian);
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+        }
+
+        .section-cta {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--teal);
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--teal);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .section-cta::after {
+            content: '→';
+            margin-left: 0.5em;
+            transition: margin-left 0.3s ease;
+        }
+
+        .section-cta:hover {
+            background: var(--teal);
+            color: var(--warm-white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(8, 145, 178, 0.2);
+        }
+
+        .section-cta:hover::after {
+            margin-left: 0.8em;
+        }
+
+        /* Reverse layout for alternating sections */
+        .section-block:nth-child(even) .section-inner {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .section-block:nth-child(even) .section-image {
+            order: 2;
+        }
+
+        .section-block:nth-child(even) .image-container {
+            transform: rotate(2deg);
+        }
+
+        .section-block:nth-child(even):hover .image-container {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        /* Coming Soon Sections */
+        .coming-soon-section {
+            opacity: 0.5;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--teal);
+            border: 1px solid var(--teal);
+            padding: 0.4rem 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--obsidian);
+            color: var(--platinum);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 1.3rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo .re {
+            color: var(--platinum);
+        }
+
+        .footer-logo .vision {
+            color: var(--teal);
+        }
+
+        .footer-tagline {
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0.6;
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav {
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--platinum);
+        }
+
+        .footer-divider {
+            margin: 0 1.25rem;
+            opacity: 0.5;
+            color: var(--teal);
+        }
+
+        .footer-copyright {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            opacity: 0.4;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+
+            .hero-container {
+                padding: 1.5rem;
+            }
+
+            .quote-line {
+                font-size: clamp(1.1rem, 5vw, 1.6rem);
+                line-height: 1.7;
+                padding: 0 0.5rem;
+            }
+
+            .hero-logo {
+                font-size: clamp(2.2rem, 13vw, 4rem);
+                letter-spacing: 0.15em;
+                margin: 0.6em 0;
+            }
+
+            .manifesto {
+                padding: 4rem 2rem;
+            }
+
+            .manifesto-quote {
+                font-size: 2.2rem;
+            }
+
+            .manifesto-text {
+                font-size: 1.1rem;
+            }
+
+            .section-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 3rem 1.5rem;
+            }
+
+            .section-block {
+                min-height: auto;
+            }
+
+            .section-block:nth-child(even) .section-image {
+                order: 1;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .section-description {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+                opacity: 1;
+                pointer-events: all;
+                background: rgba(250, 250, 249, 0.95);
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+
+            /* Hide regular nav links on mobile */
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100vw;
+                height: 100vh;
+                background: var(--warm-white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                z-index: 999;
+                padding-top: 2rem;
+            }
+
+            .nav-links.mobile-open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                letter-spacing: 0.2em;
+                color: var(--obsidian);
+            }
+
+            /* Hamburger menu button */
+            .mobile-menu-btn {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 5px;
+                width: 28px;
+                height: 28px;
+                cursor: pointer;
+                z-index: 1001;
+            }
+
+            .mobile-menu-btn span {
+                display: block;
+                width: 100%;
+                height: 1.5px;
+                background: var(--obsidian);
+                transition: all 0.3s ease;
+            }
+
+            .mobile-menu-btn.open span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .mobile-menu-btn.open span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-btn.open span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .manifesto-quote {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                letter-spacing: 0.08em;
+            }
+
+            .hero-logo {
+                letter-spacing: 0.15em;
+            }
+
+            /* Remove rotation on mobile to prevent overflow */
+            .image-container {
+                transform: none;
+            }
+
+            .section-block:hover .image-container {
+                transform: none;
+            }
+
+            .section-block:nth-child(even) .image-container {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .quote-line {
+                font-size: clamp(1rem, 5.5vw, 1.3rem);
+            }
+
+            .hero-logo {
+                font-size: clamp(1.8rem, 14vw, 3rem);
+                letter-spacing: 0.12em;
+            }
+
+            .manifesto-quote {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Hamburger menu - hidden on desktop, shown on mobile */
+        .mobile-menu-btn {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <a href="index.html" class="nav-logo">
+            <span class="re">re</span><span class="vision">VISION</span>
+        </a>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#discover">Discover</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="connect.html">Connect</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <div class="vignette"></div>
+
+        <div class="hero-container" id="heroMain">
+            <p class="quote-line quote-line-1">When you change the way you see things</p>
+            
+            <h1 class="hero-logo">
+                <span class="re">re</span><span class="vision">VISION</span>
+            </h1>
+            
+            <p class="quote-line quote-line-2">the things you see change</p>
+        </div>
+
+        <div class="reveal-indicator" id="revealBtn"></div>
+    </section>
+
+    <!-- Manifesto Section -->
+    <section class="manifesto" id="manifesto">
+        <blockquote class="manifesto-quote">
+            "Change the way you see things and the things you see change."
+        </blockquote>
+        <div class="manifesto-text">
+            <p>
+                What happens when you change the way you look at things? That's the central question behind reVISION. The concept is built on a profound, powerful truth: when you change the way you see things, the things you see change.
+            </p>
+            <p>
+                It's the path where the unwanted, the discarded, the unvalued, or the simply ignored meet our attention, ingenuity, and resourcefulness, revealing a world of astonishing potential in unexpected places.
+            </p>
+            <p>
+                reVISION inspires us to look with curiosity and wonder, not just at the places and things around us but also within ourselves. This journey reveals how a shift in perspective can lead to brilliant creations, remarkable solutions, and extraordinary innovations, while also helping us discover the simple, unseen wonders and profound insights in our everyday lives.
+            </p>
+        </div>
+    </section>
+
+    <!-- DISCOVER Section -->
+    <section id="discover" class="section-block">
+        <div class="section-inner">
+            <div class="section-image">
+                <div class="image-container">
+                    <img src="discover-image.jpg" alt="Teal butterfly finding nourishment in rotting fruit - transformation and beauty discovered in the overlooked and discarded">
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="section-label">Explore</div>
+                <h2 class="section-title">DISCOVER</h2>
+                <p class="section-description">
+                    Stories of transformation across people, nature, objects, and systems. Curated films, visual galleries, and perspective-shifting media. Witness the power of seeing differently.
+                </p>
+                <a href="discover.html" class="section-cta">Explore Stories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEARN Section -->
+    <section id="learn" class="section-block">
+        <div class="section-inner">
+            <div class="section-image">
+                <div class="image-container">
+                    <div class="image-placeholder">Image: Learn</div>
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="section-label">Grow</div>
+                <h2 class="section-title">LEARN</h2>
+                <p class="section-description">
+                    Develop your capacity for perspective-shifting. Thought experiments, sensory exercises, and creative tools to cultivate new ways of seeing.
+                </p>
+                <a href="learn.html" class="section-cta">Start Learning</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE Section -->
+    <section id="experience" class="section-block coming-soon-section">
+        <div class="section-inner">
+            <div class="section-image">
+                <div class="image-container">
+                    <div class="image-placeholder">Image: Experience</div>
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="coming-soon-badge">Coming Soon</div>
+                <div class="section-label">Participate</div>
+                <h2 class="section-title">EXPERIENCE</h2>
+                <p class="section-description">
+                    Interactive tools to shift your perspective. The reVISION oracle, lens swap tools, guided visualizations, and journaling prompts—discover new ways of seeing your world.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT Section -->
+    <section id="connect" class="section-block coming-soon-section">
+        <div class="section-inner">
+            <div class="section-image">
+                <div class="image-container">
+                    <div class="image-placeholder">Image: Connect</div>
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="coming-soon-badge">Coming Soon</div>
+                <div class="section-label">Join</div>
+                <h2 class="section-title">CONNECT</h2>
+                <p class="section-description">
+                    Share your own reVISION moments. Join collaborative projects, participate in challenges, and connect with a global community of perspective-shifters.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-logo"><span class="re">re</span><span class="vision">VISION</span></p>
+            <p class="footer-tagline">Exploring the astonishing potential that exists in surprising places</p>
+            <div class="footer-nav">
+                <a href="about.html">About</a>
+                <span class="footer-divider">·</span>
+                <a href="faq.html">FAQ</a>
+                <span class="footer-divider">·</span>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="footer-copyright">© 2025 reVISION. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const heroMain = document.getElementById('heroMain');
+        const revealBtn = document.getElementById('revealBtn');
+        const nav = document.getElementById('nav');
+
+        setTimeout(() => {
+            heroMain.classList.add('transformed');
+        }, 5000);
+
+        setTimeout(() => {
+            revealBtn.classList.add('visible');
+        }, 6500);
+
+        revealBtn.addEventListener('click', () => {
+            document.getElementById('manifesto').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('visible');
+            } else {
+                nav.classList.remove('visible');
+            }
+        });
+
+        const sections = document.querySelectorAll('.section-block');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = entry.target.classList.contains('coming-soon-section') ? '0.5' : '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'all 1s ease';
+            observer.observe(section);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('open');
+            navLinks.classList.toggle('mobile-open');
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('open');
+                navLinks.classList.remove('mobile-open');
+            });
+        });
+    </script>
+</body>
+</html>
