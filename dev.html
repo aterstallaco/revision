@@ -418,16 +418,23 @@
             max-width: 100%;
         }
 
-        .section-image img {
-            width: 100%;
-            max-width: 500px;
-            aspect-ratio: 4/3;
-            object-fit: cover;
-            border: 1px solid rgba(8, 145, 178, 0.2);
-            box-shadow: 
-                20px 20px 60px rgba(10, 15, 22, 0.15),
-                -10px -10px 40px rgba(250, 250, 249, 0.5);
-        }
+      .section-image img {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border: 1px solid rgba(8, 145, 178, 0.2);
+    box-shadow: 
+        20px 20px 60px rgba(10, 15, 22, 0.15),
+        -10px -10px 40px rgba(250, 250, 249, 0.5);
+}
+
+/* Override for mobile */
+@media (max-width: 768px) {
+    .section-image img {
+        max-width: 100%;
+    }
+}
 
         .section-content {
             padding: 2rem 0;
@@ -677,6 +684,11 @@
     height: auto;
     margin: 0 auto;
     display: block;
+}
+
+.image-container {
+    max-width: 100%;
+    width: 100%;
 }
 
             /* Hide regular nav links on mobile */
