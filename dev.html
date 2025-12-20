@@ -669,11 +669,13 @@
                 order: 1;
             }
 
-            .section-image img {
-                max-width: 400px;
-                margin: 0 auto;
-                display: block;
-            }
+           section-image img {
+        width: 100%;       /* Forces image to fill the width */
+        max-width: 100%;   /* Allows it to be as big as the screen */
+        height: auto;      /* Keeps the proportions perfect */
+        margin: 0 auto;
+        display: block;
+    }
 
             /* Hide regular nav links on mobile */
             .nav-links {
