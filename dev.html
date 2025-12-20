@@ -361,27 +361,27 @@
         }
 
         /* Section Blocks */
-      .section-block {
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    border-top: 1px solid rgba(10, 15, 22, 0.08);
-}
+        .section-block {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            border-top: 1px solid rgba(10, 15, 22, 0.08);
+        }
 
         .section-block:nth-child(even) {
             background: linear-gradient(135deg, rgba(8, 145, 178, 0.02) 0%, transparent 100%);
         }
 
-       .section-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 4rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: center;
-}
+        .section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
 
         .section-image {
             position: relative;
@@ -512,23 +512,6 @@
 
         .section-block:nth-child(even):hover .image-container {
             transform: rotate(0deg) scale(1.02);
-        }
-
-        /* Coming Soon Sections */
-        .coming-soon-section {
-            opacity: 0.5;
-        }
-
-        .coming-soon-badge {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--teal);
-            border: 1px solid var(--teal);
-            padding: 0.4rem 1rem;
-            margin-bottom: 1rem;
         }
 
         /* Footer */
@@ -880,7 +863,7 @@
         <div class="section-inner">
             <div class="section-image">
                 <div class="image-container">
-                    <img src="discover-image.jpg" alt="Teal butterfly finding nourishment in rotting fruit - transformation and beauty discovered in the overlooked and discarded">
+                    <img src="discover-image.jpg" alt="reVISION Discover - a teal butterfly finds nourishment in rotting fruit, revealing transformation and beauty in the overlooked and discarded">
                 </div>
             </div>
             <div class="section-content">
@@ -899,7 +882,7 @@
         <div class="section-inner">
             <div class="section-image">
                 <div class="image-container">
-                    <img src="learn-image.jpg" alt="Seedling sprouting through fallen leaves toward light - developing capacity for growth and new perspective">
+                    <img src="learn-image.jpg" alt="reVISION Learn - a seedling sprouting through fallen leaves toward forest light, representing growth and developing new ways of seeing">
                 </div>
             </div>
             <div class="section-content">
@@ -914,40 +897,39 @@
     </section>
 
     <!-- EXPERIENCE Section -->
-<section id="experience" class="section-block coming-soon-section">
-    <div class="section-inner">
-        <div class="section-image">
-            <div class="image-container">
-               <img src="experience-image.jpg" alt="reVISION Earth from the sky">
-            </div>
-        </div>
-        <div class="section-content">
-            <div class="coming-soon-badge">Coming Soon</div>
-            <div class="section-label">Participate</div>
-            <h2 class="section-title">EXPERIENCE</h2>
-            <p class="section-description">
-                Interactive tools to shift your perspective. The reVISION oracle, lens swap tools, guided visualizations, and journaling prompts—discover new ways of seeing your world.
-            </p>
-        </div>
-    </div>
-</section>
-
-    <!-- CONNECT Section -->
-    <section id="connect" class="section-block coming-soon-section">
+    <section id="experience" class="section-block">
         <div class="section-inner">
             <div class="section-image">
                 <div class="image-container">
-                    <img src="connect-image.jpg" alt="intertwined fabric">
-               
+                    <img src="experience-image.jpg" alt="reVISION Experience - interactive tools for shifting perspective">
                 </div>
             </div>
             <div class="section-content">
-                <div class="coming-soon-badge">Coming Soon</div>
+                <div class="section-label">Participate</div>
+                <h2 class="section-title">EXPERIENCE</h2>
+                <p class="section-description">
+                    Interactive tools to shift your perspective. The reVISION oracle, lens swap tools, guided visualizations, and journaling prompts—discover new ways of seeing your world.
+                </p>
+                <a href="experience.html" class="section-cta">Coming Soon</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT Section -->
+    <section id="connect" class="section-block">
+        <div class="section-inner">
+            <div class="section-image">
+                <div class="image-container">
+                    <img src="connect-image.jpg" alt="reVISION Connect - global perspective and interconnection from above">
+                </div>
+            </div>
+            <div class="section-content">
                 <div class="section-label">Join</div>
                 <h2 class="section-title">CONNECT</h2>
                 <p class="section-description">
                     Share your own reVISION moments. Join collaborative projects, participate in challenges, and connect with a global community of perspective-shifters.
                 </p>
+                <a href="connect.html" class="section-cta">Coming Soon</a>
             </div>
         </div>
     </section>
@@ -996,7 +978,7 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = entry.target.classList.contains('coming-soon-section') ? '0.5' : '1';
+                    entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
