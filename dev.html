@@ -666,30 +666,39 @@
             }
 
             /* Stack sections on mobile */
-            .section-inner {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 3rem 1.5rem;
-}
+    .section-inner {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+        padding: 3rem 1.5rem;
+    }
 
-/* 2. This ensures images always stay on top when stacked */
-.section-block:nth-child(even) .section-image {
-    order: 1;
-} 
+    /* Reset all order rules for mobile - images on top, content below */
+    .section-block .section-image {
+        order: 1;
+    }
 
-/* 3. This makes the images actually expand to fill the screen width */
-.section-image img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-}
+    .section-block .section-content {
+        order: 2;
+    }
 
-.image-container {
-    max-width: 100%;
-    width: 100%;
-}
+    /* Make images full width on mobile */
+    .section-image {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .image-container {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .section-image img {
+        width: 100%;
+        max-width: 100% !important;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
 
             /* Hide regular nav links on mobile */
             .nav-links {
