@@ -660,22 +660,24 @@
 
             /* Stack sections on mobile */
             .section-inner {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 3rem 1.5rem;
-            }
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 1.5rem;
+}
 
-            .section-block:nth-child(even) .section-image {
-                order: 1;
-            }
+/* 2. This ensures images always stay on top when stacked */
+.section-block:nth-child(even) .section-image {
+    order: 1;
+} 
 
-           section-image img {
-        width: 100%;       /* Forces image to fill the width */
-        max-width: 100%;   /* Allows it to be as big as the screen */
-        height: auto;      /* Keeps the proportions perfect */
-        margin: 0 auto;
-        display: block;
-    }
+/* 3. This makes the images actually expand to fill the screen width */
+.section-image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
 
             /* Hide regular nav links on mobile */
             .nav-links {
